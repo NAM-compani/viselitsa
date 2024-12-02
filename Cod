@@ -103,7 +103,7 @@ with open("слова.txt", "r", encoding="utf-8") as f:
 word = random.choice(words)
 bukva = set(word)
 alf = set("абвгдеёжзийклмнопрстуфхцчшщъыьэюя")
-ugadani = set()
+ugadani = set() 
 ne_ugad = set()
 hp = 6
 print("Угадайте слово:",  len(word) * "_")
@@ -111,29 +111,29 @@ print("Угадайте слово:",  len(word) * "_")
 while hp >= 0 and len(bukva) >= 0:
   print("У вас осталось", hp, "жизней")
   print("Неугаданные буквы:", ' '.join(ne_ugad))
-  guess = input("Введите букву: ").lower()
-  if guess in alf - ne_ugad - ugadani:
-    ugadani.add(guess)
-    if guess in bukva:
-      bukva.remove(guess)
+  polz_bukv = input("Введите букву: ").lower()
+  if polz_bukv in alf - ne_ugad - ugadani:
+    ugadani.add(polz_bukv)
+    if polz_bukv in bukva:
+      bukva.remove(polz_bukv)
       print(" ")
     else:
-      ne_ugad.add(guess)
+      ne_ugad.add(polz_bukv)
       hp -= 1
       print(" ")
-if hp == 0:
+    if hp == 0:
       print("У вас закончились жизни. Слово было:", word)
       ris = smail(hp)
       break
-    if len(bukv) == 0:
+    if len(bukva) == 0:
         print("Поздравляю! Вы угадали слово:", word)
         break
-    if len(bukv) != 0 and hp > 0:
+    if len(bukva) != 0 and hp > 0:
       ris =smail(hp)
-      if len(bukv) == 0:
+      if len(bukva) == 0:
           print("Поздравляю! Вы угадали слово:", word)
           break
-elif guess in ugadani:
+  elif polz_bukv in ugadani:
     print("Вы уже угадали эту букву. Попробуйте другую.")
   else:
     print("Неверный ввод. Введите букву.")
